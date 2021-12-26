@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         $request->validate([
             'device_name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email',
             'password' => 'required|min:6',
         ]);
 
@@ -53,7 +53,7 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => Hash::make($request->password)
         ]);
         return response()->json($user);
     }
