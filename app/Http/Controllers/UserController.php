@@ -12,7 +12,7 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:3',
+            'device_name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
