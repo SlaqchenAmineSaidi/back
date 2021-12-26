@@ -12,3 +12,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('login', 'UserController@login');
 Route::post('store', 'UserController@store');
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    $user = $request->user();
+    $user->tokens()->delete();
+    return 'Tokens are deleted'
+});
