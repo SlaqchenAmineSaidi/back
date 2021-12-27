@@ -10,8 +10,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('login', 'UserController@login');
-Route::post('store', 'UserController@store');
+Route::post('/sanctum/token', [App\Http\Controllers\UserController::class, 'login']);
+
+Route::apiResource('/user', App\Http\Controllers\UserController::class)->only('store');
 
 Route::middleware('auth:sanctum')->get('/user/revoke', function (Request $request) {
     $user = $request->user();
