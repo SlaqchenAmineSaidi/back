@@ -14,7 +14,7 @@ class UserController extends Controller
         $request->validate([
             'device_name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:6',
+            'password' => 'required',
         ]);
 
         $user = User::where('email',$request->email)->first();
