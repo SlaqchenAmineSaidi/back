@@ -12,9 +12,9 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'device_name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
+            'device_name' => 'required',
         ]);
 
         $user = User::where('email',$request->email)->first();
