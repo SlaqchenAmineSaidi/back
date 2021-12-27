@@ -23,8 +23,8 @@ class UserController extends Controller
             throw ValidationException::withMessages([
                 'email' =>['The provided credentials are incorrect.']
             ]);
-            return $user->createToken($request->device_name)->plainTextToken;
         }
+        return $user->createToken($request->device_name)->plainTextToken;
     }
     /**
      * Display a listing of the resource.
