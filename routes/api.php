@@ -9,10 +9,10 @@ use Illuminate\Validation\ValidationException;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('/sanctum/token', [App\Http\Controllers\UserController::class, 'login']);
-Route::post('/sanctum/token/store', [App\Http\Controllers\UserController::class, 'store']);
-
+Route::post('/service', [App\Http\Controllers\ServiceController::class, 'book']);
+Route::post('/login', [App\Http\Controllers\UserController::class, 'login']);
+Route::post('/store', [App\Http\Controllers\UserController::class, 'store']);
+Route::post('/reserver', [App\Http\Controllers\ReservationController::class, 'reserver']);
 Route::middleware('auth:sanctum')->get('/user/revoke', function (Request $request) {
     $user = $request->user();
     $user->tokens()->delete();

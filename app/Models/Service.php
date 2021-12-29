@@ -7,13 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 
-class Reservation extends Model
+class Service extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
-
     protected $fillable = [
-        'gender',
-        'day',
-        'time',
+        'price',
+        'title',
     ];
 }
