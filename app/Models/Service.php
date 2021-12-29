@@ -14,4 +14,9 @@ class Service extends Model
         'price',
         'title',
     ];
+
+    public function reservation()
+    {
+        return $this->belongsTo(Reservation::class);
+    }
 }

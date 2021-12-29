@@ -15,5 +15,11 @@ class Reservation extends Model
         'gender',
         'day',
         'time',
+        'service_id'
     ];
+
+    public function service()
+    {
+        return $this->hasOne(Service::class);
+    }
 }
