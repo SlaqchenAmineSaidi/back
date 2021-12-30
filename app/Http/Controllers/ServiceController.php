@@ -36,10 +36,12 @@ class ServiceController extends Controller
     public function book(Request $request)
     {
         $request->validate([
+            'reservation_id'=>'required',
             'title'=> 'required',
             'price'=> 'required',
         ]);
         $service = Service::create([
+            'price'=> $request->reservation_id,
             'title'=> $request->title,
             'price'=> $request->price,
         ]);

@@ -17,7 +17,7 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->string('gender');
             $table->string('day');
-            $table->string('time')->unique();
+            $table->string('time');
             $table->timestamps();
         });
     }

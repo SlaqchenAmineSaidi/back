@@ -35,7 +35,7 @@ class ReservationController extends Controller
             'day'=>$request->day,
             'time'=>$request->time,
         ]);
-        return response()->json($reservation);
+        return response()->json($reservation->only('id'));
     }
 
     /**

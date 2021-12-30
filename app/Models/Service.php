@@ -11,6 +11,7 @@ class Service extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $fillable = [
+        'reservation_id',
         'price',
         'title',
     ];
