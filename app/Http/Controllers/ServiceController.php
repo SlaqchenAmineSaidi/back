@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,7 @@ class ServiceController extends Controller
             'price'=> 'required',
         ]);
         $service = Service::create([
-            'price'=> $request->reservation_id,
+            'reservation_id'=> $request->reservation_id,
             'title'=> $request->title,
             'price'=> $request->price,
         ]);
