@@ -18,6 +18,7 @@ class CreateReservationsTable extends Migration
             $table->string('gender');
             $table->string('day');
             $table->string('time');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -34,6 +34,7 @@ class ReservationController extends Controller
             'gender'=> $request->gender,
             'day'=>$request->day,
             'time'=>$request->time,
+            'user_id'=>$request->user()->id
         ]);
         return response()->json($reservation->only('id'));
     }
@@ -44,9 +45,10 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showen($id)
     {
-        //
+        $reservations=Reservation::find($id);
+        return response()->json($reservations);
     }
 
     /**
