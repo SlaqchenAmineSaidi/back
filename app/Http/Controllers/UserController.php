@@ -48,15 +48,19 @@ class UserController extends Controller
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
+            'role' => 'required',
         ]);
  
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'role' =>$request->role,
         ]);
         return response()->json($user);
     }
+
+    
 
     /**
      * Display the specified resource.
@@ -76,9 +80,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user=$request->user();
+        $user->role=2;
+        $user->save();
+        return response()->json($user);
     }
 
     /**

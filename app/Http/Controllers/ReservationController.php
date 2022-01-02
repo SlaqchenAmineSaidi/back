@@ -45,9 +45,9 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showen($id)
+    public function showen()
     {
-        $reservations=Reservation::find($id);
+        $reservations=Reservation::with('user')->get();
         return response()->json($reservations);
     }
 
