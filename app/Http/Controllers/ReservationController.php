@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -23,7 +24,7 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function reserver(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'gender'=> 'required',
@@ -45,9 +46,10 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showen()
+    public function showen($id)
     {
-        $reservations=Reservation::with('user')->get();
+        // $reservations=User::with('reservations')->where('id',$id)->get();
+        $reservations=Reservation::where('user_id',$id)->get();
         return response()->json($reservations);
     }
 

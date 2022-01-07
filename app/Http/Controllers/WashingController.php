@@ -19,6 +19,6 @@ class WashingController extends Controller
             'wash_name' =>$request->wash_name,
             'user_id'=>$request->user()->id
         ]);
-        return response()->json($request);
+        return response()->json($washing);
     }
 }

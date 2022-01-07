@@ -16,12 +16,12 @@ class UserController extends Controller
             'password' => 'required',
             'device_name' => 'required',
         ]);
-
-        $user = User::where('email',$request->email)->first();
-
-        if(! $user || ! Hash::check($request->password, $user->password)){
+    
+        $user = User::where('email', $request->email)->first();
+    
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
-                'email' =>['The provided credentials are incorrect.']
+                'email' => ['The provided credentials are incorrect.'],
             ]);
         }
         return $user->createToken($request->device_name)->plainTextToken;
@@ -44,18 +44,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|min:3',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-            'role' => 'required',
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string|unique:users|email',
+            'password' => 'required|min:4',
         ]);
- 
+        
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' =>$request->role,
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password'=>Hash::make($request->password),
+            'role'=>$request->role,
         ]);
         return response()->json($user);
     }
