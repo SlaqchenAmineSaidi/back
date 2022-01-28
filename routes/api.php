@@ -26,3 +26,9 @@ Route::middleware('auth:sanctum')->get('/user/revoke', function (Request $reques
     $user->tokens()->delete();
     return 'Tokens are deleted';
 });
+//adresse
+Route::get('/showAdresse/{id}', [App\Http\Controllers\AdresseControlleur::class, 'showAdresse']);
+Route::middleware('auth:sanctum')->post('/create', [App\Http\Controllers\AdresseControlleur::class, 'create']);
+//comment
+Route::get('/showComments/{id}', [App\Http\Controllers\CommentControlleur::class, 'showComments']);
+Route::middleware('auth:sanctum')->post('/make', [App\Http\Controllers\CommentControlleur::class, 'make']);

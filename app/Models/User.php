@@ -51,4 +51,12 @@ class User extends Authenticatable
     {
         return $this->hasOne(Washing::class);
     }
+    public function adresses()
+    {
+        return $this->hasMany(Adresse::class);
+    }
+    public function Comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
