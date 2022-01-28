@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CommentControlleur extends Controller
@@ -22,9 +23,9 @@ class CommentControlleur extends Controller
         return response()->json($comment);
     }
 
-    public function showComments($id)
+    public function showComments()
     {
-        $comments=Comment::where('user_id',$id)->get();
+        $comments=Comment::with('user')->get();
         return response()->json($comments);
     }
 }
