@@ -87,6 +87,13 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    public function updat($id)
+    {
+        $user=User::findOrFail($id);
+        $user->role=3;
+        $user->save();
+        return response()->json($user);
+    }
     /**
      * Remove the specified resource from storage.
      *

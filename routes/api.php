@@ -32,3 +32,7 @@ Route::middleware('auth:sanctum')->post('/create', [App\Http\Controllers\Adresse
 //comment
 Route::get('/showComments', [App\Http\Controllers\CommentControlleur::class, 'showComments']);
 Route::middleware('auth:sanctum')->post('/make', [App\Http\Controllers\CommentControlleur::class, 'make']);
+//complain
+Route::put('/updat/{id}', [App\Http\Controllers\UserController::class, 'updat']);
+Route::get('/showComplains', [App\Http\Controllers\ComplainControlleur::class, 'showComplains']);
+Route::middleware('auth:sanctum')->post('/complain', [App\Http\Controllers\ComplainControlleur::class, 'complain']);
