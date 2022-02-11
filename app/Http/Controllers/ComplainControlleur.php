@@ -11,10 +11,12 @@ class ComplainControlleur extends Controller
     {
         $request->validate([
             'complain' => 'required',
+            'WashId' => 'required'
         ]);
  
         $complain = Complain::create([
             'complain' =>$request->complain,
+            'WashId' =>$request->WashId,
             'user_id'=>$request->user()->id
         ]);
         return response()->json($complain);

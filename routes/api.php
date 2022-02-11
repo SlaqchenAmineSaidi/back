@@ -28,7 +28,8 @@ Route::middleware('auth:sanctum')->get('/user/revoke', function (Request $reques
 });
 //adresse
 Route::get('/showAdresse/{id}', [App\Http\Controllers\AdresseControlleur::class, 'showAdresse']);
-Route::middleware('auth:sanctum')->post('/create', [App\Http\Controllers\AdresseControlleur::class, 'create']);
+Route::get('/showallAdresses', [App\Http\Controllers\AdresseControlleur::class, 'showallAdresses']);
+Route::post('/create', [App\Http\Controllers\AdresseControlleur::class, 'create']);
 //comment
 Route::get('/showComments', [App\Http\Controllers\CommentControlleur::class, 'showComments']);
 Route::middleware('auth:sanctum')->post('/make', [App\Http\Controllers\CommentControlleur::class, 'make']);
@@ -36,3 +37,5 @@ Route::middleware('auth:sanctum')->post('/make', [App\Http\Controllers\CommentCo
 Route::put('/updat/{id}', [App\Http\Controllers\UserController::class, 'updat']);
 Route::get('/showComplains', [App\Http\Controllers\ComplainControlleur::class, 'showComplains']);
 Route::middleware('auth:sanctum')->post('/complain', [App\Http\Controllers\ComplainControlleur::class, 'complain']);
+Route::put('/updatWash/{id}', [App\Http\Controllers\UserController::class, 'updatWash']);
+Route::delete('/destroy/{id}', [App\Http\Controllers\UserController::class, 'destroy']);

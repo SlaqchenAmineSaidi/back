@@ -94,6 +94,14 @@ class UserController extends Controller
         $user->save();
         return response()->json($user);
     }
+
+    public function updatWash($id)
+    {
+        $user=User::findOrFail($id);
+        $user->role=2;
+        $user->save();
+        return response()->json($user);
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -102,6 +110,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return response()->json();
     }
 }

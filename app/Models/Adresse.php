@@ -14,11 +14,11 @@ class Adresse extends Model
     protected $fillable = [
         'adress1',
         'adress2',
-        'user_id'
+        'service_id'
     ];
 
-    public function user()
+    public function service()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Service::class);
     }
 }

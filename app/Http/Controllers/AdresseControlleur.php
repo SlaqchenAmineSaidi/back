@@ -17,15 +17,20 @@ class AdresseControlleur extends Controller
         $adresse = Adresse::create([
             'adress1' =>$request->adress1,
             'adress2' =>$request->adress2,
-            'user_id'=>$request->user()->id
+            'service_id'=>$request->service_id
         ]);
         return response()->json($adresse);
     }
 
     public function showAdresse($id)
     {
-        $adresses=Adresse::where('user_id',$id)->get();
+        $adresses=Adresse::where('service_id',$id)->get();
         return response()->json($adresses);
     }
 
+    public function showallAdresses()
+    {
+        $adresses=Adresse::with('service')->get();
+        return response()->json($adresses);
+    }
 }

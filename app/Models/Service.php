@@ -20,4 +20,8 @@ class Service extends Model
     {
         return $this->belongsTo(Reservation::class);
     }
+    public function adresse()
+    {
+        return $this->hasOne(Adresse::class);
+    }
 }
