@@ -16,7 +16,7 @@ class CreateComplainsTable extends Migration
         Schema::create('complains', function (Blueprint $table) {
             $table->id();
             $table->string('complain');
-            $table->int('WashId');
+            $table->double('WashId');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
